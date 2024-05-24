@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Data Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Currency Data Form</h1>
+    <form method="POST" class="form-container">
+        {% csrf_token %}
+        <div class="form-label">
+            <label for="startDate">Выберите начало периода</label>
+            <input type="date" id="startDate" name="startDate" required>
+        </div>
+        <div class="form-label">
+            <label for="endDate">Выберите окончания периода</label>
+            <input type="date" id="endDate" name="endDate" required>
+        </div>
+        <div class="form-label">
+            <label for="selectedCurrency">Выберите валюту</label>
+            <select id="selectedCurrency" name="selectedCurrency" class="form-select" required>
+                {% for code, name in currencies.items %}
+                    <option value="{{ code }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="form-button">Показать данные</button>
+    </form>
+</body>
+</html>

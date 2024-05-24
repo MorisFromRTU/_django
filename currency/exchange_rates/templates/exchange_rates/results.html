@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Data Results</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Currency Data Results</h1>
+    <div id="dataContainer">
+        <ul class="data-list" id="dataList">
+            <li class="data-item bold">
+                <span>Дата</span>
+                <span>Кол-во</span>
+                <span>Курс</span>
+                <span>Изменение</span>
+            </li>
+            {% for row in result %}
+                <li class="data-item">
+                    {% for cell in row %}
+                        <span>{{ cell }}</span>
+                    {% endfor %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="{% url 'index' %}">Back to form</a>
+</body>
+</html>
