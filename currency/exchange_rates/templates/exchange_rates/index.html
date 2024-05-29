@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Currency Data Form</h1>
-    <form method="POST" class="form-container">
+    <form method="POST" action="{% url 'get_currency_data' %}" class="form-container">
         {% csrf_token %}
         <div class="form-label">
             <label for="startDate">Выберите начало периода</label>
@@ -23,8 +22,8 @@
         <div class="form-label">
             <label for="selectedCurrency">Выберите валюту</label>
             <select id="selectedCurrency" name="selectedCurrency" class="form-select" required>
-                {% for code, name in currencies.items %}
-                    <option value="{{ code }}">{{ name }}</option>
+                {% for currency in currencies %}
+                    <option value="{{ currency.code }}">{{ currency.name }}</option>
                 {% endfor %}
             </select>
         </div>

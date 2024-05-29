@@ -17,6 +17,8 @@
                 <span>Курс</span>
                 <span>Изменение</span>
             </li>
+
+            
             {% for row in result %}
                 <li class="data-item">
                     {% for cell in row %}
@@ -26,6 +28,6 @@
             {% endfor %}
         </ul>
     </div>
-    <a href="{% url 'index' %}">Back to form</a>
+    <a href="{% url 'get_currencies' %}">Back to form</a>
 </body>
 </html>
